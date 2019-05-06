@@ -6,22 +6,29 @@ class Node;
 
 
 class Edge {
-	
-	public:
-	
-		Edge(void);
-		Edge(Node *start, Node *end, double new_weight);
-		Edge(const Edge& old);
-		~Edge();
+private:
+    // Zum Speichern der Adressen der verbundenen Knoten.
+    Node *startnode;
+    Node *endnode;
 
-	
-	private:
-		
-		Node 	*startnode;
-		Node 	*endnode;
-		double 	weight;
+    // Zum Speichern des Kantengewichts.
+    float weight;
 
+public:
+    Edge();
+    Edge(Node *start, Node *end, double new_weight);
+    Edge(const Edge &old);    // Copy-Constructor
+    ~Edge();
+
+    float getWeight();
+    Node * getStartNode();
+    Node * getEndNode();
+    void setWeight(float weight);
+    void setStartNode(Node * node);
+    void setEndNode(Node * node);
 };
+
+
 
 
 #endif

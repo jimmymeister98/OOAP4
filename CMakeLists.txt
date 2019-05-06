@@ -9,7 +9,7 @@ set(SOURCE_FILES
         edge.cpp
         liste.hpp
         node.hpp
-        node.cpp)
+        node.cpp DiGraph.cpp DiGraph.h DotGraphVisualizer.h)
 
 add_executable(P3 ${SOURCE_FILES})
 
