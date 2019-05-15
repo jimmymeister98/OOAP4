@@ -14,8 +14,11 @@ using namespace std;
 
 class DiGraph {
 private:
+    friend class Node;
+    friend class Edge;
     vector<Node*> nodes;
     Node* findNode(string &key);
+    Edge* findEdge(string &key);
     bool doesExist(vector<Node*> &list, Node * node);
 
 
@@ -25,6 +28,7 @@ public:
     vector<Node*> getNeighbours (string key);
     vector<Edge*> getEdges(string key);
     vector<Node*>getnodes();
+    void editEdge(string key, string key2, float weight);
 };
 
 

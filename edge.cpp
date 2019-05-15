@@ -1,6 +1,6 @@
 
 #include "edge.hpp"
-
+using namespace std;
 Edge::Edge() {
 
 }
@@ -16,11 +16,7 @@ Edge::Edge(const Edge &old) {
     this->endnode = old.endnode;
     this->weight = old.weight;
 }
-
-Edge::~Edge() {
-    // Possibly empty
-}
-
+Edge::~Edge() {}
 float Edge::getWeight() {
     return this->weight;
 }
@@ -43,3 +39,10 @@ void Edge::setStartNode(Node * node) {
 void Edge::setEndNode(Node * node) {
     this->endnode = node;
 }
+
+void Edge::removeEdge() {
+    delete this->startnode;
+    delete this->endnode;
+    delete this;
+}
+

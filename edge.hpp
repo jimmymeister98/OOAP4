@@ -2,6 +2,8 @@
 #ifndef _EDGE_HPP
 #define _EDGE_HPP
 
+#include <c++/4.8.3/string>
+
 class Node;
 
 
@@ -19,13 +21,14 @@ public:
     Edge(Node *start, Node *end, double new_weight);
     Edge(const Edge &old);    // Copy-Constructor
     ~Edge();
-
+    void removeEdge();
     float getWeight();
     Node * getStartNode();
     Node * getEndNode();
     void setWeight(float weight);
     void setStartNode(Node * node);
     void setEndNode(Node * node);
+    Node * getKey();
 };
 
 
