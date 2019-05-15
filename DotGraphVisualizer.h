@@ -1,37 +1,48 @@
 //
-// Created by arisl on 01.05.2019.
+// Created by aris on 01.05.2019.
 //
 
 #ifndef OOA_PRAKTIKUM_3_DOTGRAPHVISUALIZER_HPP
 #define OOA_PRAKTIKUM_3_DOTGRAPHVISUALIZER_HPP
 
 #include "DiGraph.h"
-
-class DotGraphVisualizer {  // TODO: Implementieren
+#include <iostream>
+#include <fstream>
+using namespace std;
+class DotGraphVisualizer {  //
 public:
+
     /* Gibt den übergebenen Graphen auf der Konsole in der DOT-Notation aus. Bei-
        spiele hierzu ﬁnden Sie im Anhang in den Abbildungen 3 bis 5. */
     void visualize(DiGraph &graph) {
-        cout << "digraph {" << endl;    // Start
-        cout << "\tnode [shape = circle];" << endl;   // Set shape of node to circle
+
+        ofstream myfile;
+        myfile.open ("example.txt",ios::out);
+
+        if (myfile.is_open())
+        {
+        myfile << "digraph {" << endl;    // Start
+        myfile << "\tnode [shape = circle];" << endl;   // Set shape of node to circle
 
         // print all
         for (Node * node : graph.getnodes())
             for (Edge * edge : node->getEdges()) {
-                cout << "\t\"" << edge->getStartNode()->getKey() << "\"\t";
+                myfile << "\t\"" << edge->getStartNode()->getKey() << "\"\t";
 
                 if (edge->getStartNode()->getKey().size() + 2 <= 7) // If text to small, add tab
-                    cout << "\t";
+                    myfile << "\t";
 
-                cout << "->\t\"" << edge->getEndNode()->getKey() << "\"\t";
+                myfile << "->\t\"" << edge->getEndNode()->getKey() << "\"\t";
 
                 if (edge->getEndNode()->getKey().size() + 2 <= 7)   // If text to small, add tab
-                    cout << "\t";
+                    myfile << "\t";
 
-                cout << "[label=" << edge->getWeight() << "];" << endl;
+                myfile << "[label=" << edge->getWeight() << "];" << endl;
             }
-        cout << "}" << endl;    // End
-    }
+        myfile << "}" << endl;    // End
+        myfile.close();
+    } else
+    cout<<"Konnte datei nicht oeffnen";}
 };
 
 #endif //OOA_PRAKTIKUM_3_DOTGRAPHVISUALIZER_HPP
