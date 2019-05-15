@@ -22,6 +22,7 @@ private:
     bool doesExist(vector<Node*> &list, Node * node);
 
 
+
 public:
     void addNode(string key);
     void addEdge(string key, string key2, float weight);
@@ -29,6 +30,7 @@ public:
     vector<Edge*> getEdges(string key);
     vector<Node*>getnodes();
     void editEdge(string key, string key2, float weight);
+    void removeEdge(string key, string key2, float weight);
 };
 
 

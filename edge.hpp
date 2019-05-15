@@ -17,11 +17,11 @@ private:
     float weight;
 
 public:
+    friend class DiGraph;
     Edge();
     Edge(Node *start, Node *end, double new_weight);
     Edge(const Edge &old);    // Copy-Constructor
     ~Edge();
-    void removeEdge();
     float getWeight();
     Node * getStartNode();
     Node * getEndNode();

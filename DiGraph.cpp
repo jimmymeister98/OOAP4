@@ -71,6 +71,23 @@ void DiGraph::editEdge(string key1, string key2, float weight) {
                 edge->setWeight(weight);
 
 }
+void DiGraph::removeEdge(string key1, string key2, float weight) {
+    Node *startNode = findNode(key1);
+    Node *endNode = findNode(key2);
+
+    for (Edge *edge : startNode->getEdges())
+        if (startNode == findNode(key1))
+            if (endNode == findNode(key2))
+
+
+
+
+
+
+
+}
+
+
 
 /*Edge *DiGraph::findEdge(string &key) {
     for (Edge* node : nodes)

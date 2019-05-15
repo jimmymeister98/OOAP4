@@ -24,6 +24,7 @@ int testDriver() {
     graph.addEdge("Koeln", "Wuppertal", 52.2);
     graph.editEdge("Koeln", "Wuppertal", 0);
     graph.addEdge("Wuppertal", "Duesseldorf", 69.9);
+//    graph.removeEdge("Wuppertal","Duesseldorf", 69.9)   ; //todo
 
 
     cout << "Done!" << endl << "Getting and printing neighbours of Wuppertal..." << endl;
