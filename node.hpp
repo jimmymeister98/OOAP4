@@ -12,8 +12,7 @@
 class Node {
 	
 	public:
-		friend class Edge;
-		friend class DiGraph;
+
 		Node();
 		Node(std::string key);
 		Node(const Node& old);
@@ -29,7 +28,8 @@ class Node {
 		std::string node_key;
 		std::vector<Edge*> edges;
 
-		
+    friend class Edge;
+    friend class DiGraph;
 };
 
 #endif

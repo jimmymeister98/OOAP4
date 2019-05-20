@@ -2,10 +2,11 @@
 #include <vector>
 #include "DiGraph.h"
 #include "DotGraphVisualizer.h"
+#include "input.h"
 
 using namespace std;
 
-int testDriver() {
+/*int testDriver() {
 
     cout << "Creating graph and adding Nodes... " << endl;
 
@@ -14,7 +15,8 @@ int testDriver() {
     graph.addNode("Koeln");
     graph.addNode("Duesseldorf");
     graph.addNode("Wuppertal");
-
+    //graph.removeNode("Buxtehude");  //Test error throw
+    //graph.removeNode("Krefeld");    //Test error throw
 
     cout << "Done!" << endl << "Adding Edges ..." << endl;
 
@@ -22,9 +24,10 @@ int testDriver() {
     graph.addEdge("Krefeld", "Duesseldorf", 4.1);
     graph.addEdge("Duesseldorf", "Koeln", 44.0);
     graph.addEdge("Koeln", "Wuppertal", 52.2);
-    graph.editEdge("Koeln", "Wuppertal", 0);
+    graph.editEdge("Koeln", "Wuppertal", 4.4);
     graph.addEdge("Wuppertal", "Duesseldorf", 69.9);
-//    graph.removeEdge("Wuppertal","Duesseldorf", 69.9)   ; //todo
+    graph.removeEdge("Krefeld","Duesseldorf"); //todo
+    graph.removeNode("Wuppertal");
 
 
     cout << "Done!" << endl << "Getting and printing neighbours of Wuppertal..." << endl;
@@ -38,8 +41,12 @@ int testDriver() {
 
     cout << "Done!" << endl << "Done testing!" << endl;
 }
-
+*/
 int main() {
-    testDriver();
+    //  testDriver();
+    // DiGraph graph;
+    input(); //Lese aus datei ein und gib übersetzt in datei aus
+
+
     return 0;
 }

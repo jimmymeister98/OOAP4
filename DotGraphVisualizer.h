@@ -17,7 +17,7 @@ public:
     void visualize(DiGraph &graph) {
 
         ofstream myfile;
-        myfile.open ("example.txt",ios::out);
+        myfile.open ("ausgabe.txt",ios::out);
 
         if (myfile.is_open())
         {

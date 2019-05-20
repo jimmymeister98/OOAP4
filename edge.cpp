@@ -19,7 +19,6 @@ Edge::Edge(const Edge &old) {
 Edge::~Edge() {
 this->startnode = nullptr;
 this->endnode = nullptr;
-delete this;
 }
 
 float Edge::getWeight() {

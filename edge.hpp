@@ -2,7 +2,7 @@
 #ifndef _EDGE_HPP
 #define _EDGE_HPP
 
-#include <c++/4.8.3/string>
+//#include <c++/4.8.3/string>
 
 class Node;
 
