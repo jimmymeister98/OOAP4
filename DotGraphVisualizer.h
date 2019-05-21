@@ -14,10 +14,10 @@ public:
 
     /* Gibt den übergebenen Graphen auf der Konsole in der DOT-Notation aus. Bei-
        spiele hierzu ﬁnden Sie im Anhang in den Abbildungen 3 bis 5. */
-    void visualize(DiGraph &graph) {
+    void visualize(DiGraph &graph,string name) {
 
         ofstream myfile;
-        myfile.open ("ausgabe.txt",ios::out);
+        myfile.open (name,ios::out);
 
         if (myfile.is_open())
         {

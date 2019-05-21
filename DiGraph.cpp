@@ -13,8 +13,15 @@ Node *DiGraph::findNode(vector<Node *> &list, string &key) {
     return nullptr;
 }
 
+bool DiGraph::doesNodeExist(vector<Node *> &list, string key) { // check for string in nodes
+    return findNode(list, key) !=
+           nullptr;  // not found -> nullptr (return false), found -> reference to node (return true)
+}
+
 
 void DiGraph::addNode(string key) {
+    if (doesNodeExist(nodes, key))
+        throw runtime_error("Doppelte Node, breche ab");
     Node *newNode = new Node(key);
     nodes.push_back(newNode);
 }
@@ -33,17 +40,17 @@ bool DiGraph::doesEdgeExist(vector<Node *> &list, string &key1, string &key2) {
 void DiGraph::addEdge(string key1, string key2, float weight) {
     if (doesEdgeExist(nodes, key1, key2))
         throw runtime_error("Die Edge \"" + key1 + " -> " + key2 +
-                            "\" existiert bereits und kann deshalb nicht hinzugef\201gt werden!");
+                            "\" existiert bereits und kann deshalb nicht hinzugefuegt werden!");
 
     Node *startNode = findNode(nodes, key1);
     if (startNode == nullptr)
         throw runtime_error("Die Node \"" + key1 + "\" existiert nicht, daher kann die Edge \"" + key1 + " -> " + key2 +
-                            "\" nicht hinzugef\201gt werden!");
+                            "\" nicht hinzugefuegt werden!");
 
     Node *endNode = findNode(nodes, key2);
     if (endNode == nullptr)
         throw runtime_error("Die Node \"" + key2 + "\" existiert nicht, daher kann die Edge \"" + key1 + " -> " + key2 +
-                            "\" nicht hinzugef\201gt werden!");
+                            "\" nicht hinzugefuegt werden!");
 
     Edge *newEdge = new Edge(startNode, endNode, weight);
     startNode->addEdge(newEdge);
@@ -122,11 +129,10 @@ void DiGraph::removeEdge(string key1, string key2) {
 }
 
 
-void DiGraph::removeConnectedEdges(
-        Node *sadNode) {    // node will be very sad because he wont have connections after this | this is so sad - can we get 420 updoots?
+void DiGraph::removeConnectedEdges(Node *remNode) {
     for (Node *node : nodes)
         for (int i = 0; i < node->edges.size(); i++)
-            if (node->edges[i]->getStartNode() == sadNode || node->edges[i]->getEndNode() == sadNode) {
+            if (node->edges[i]->getStartNode() == remNode || node->edges[i]->getEndNode() == remNode) {
                 delete node->edges[i];  // free allocated memory first
                 node->edges.erase(node->edges.begin() + i); // remove edge at index i
                 i--;    // to accommodate for the removal of one entry
@@ -146,6 +152,20 @@ void DiGraph::removeNode(string key) {
             nodes.erase(nodes.begin() + i);
             break;  // done
         }
+}
+
+void DiGraph::clear() {
+
+    while (nodes.size() != 0) {
+        Node *removingNode = nodes[0];
+        string key = removingNode->getKey();
+        removeNode(key);
+    }
+    cout << "Komplette Liste Gelöscht!" << endl;
+}
+
+DiGraph::~DiGraph() {
+this->clear();
 }
 
 

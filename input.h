@@ -16,8 +16,8 @@
 
 using namespace std;
 
-void input() {
-    ifstream ifs("eingabe.txt");
+void input(string name) {
+    ifstream ifs(name);
     DiGraph graph;
     if (!ifs.eof()) {  //solange der inputstream nicht (e)nd (o)f (f)ile
         string data;
@@ -27,7 +27,7 @@ void input() {
                 int index;
                 index = data.find('*'); //wenn aus irgendeinem grund der index ==-1 ist dann abbrechen
                 if (index == -1)
-                    throw "error";
+                    throw "Error, * wurde gelöscht";
                 string name = data.substr(1); //Nimm den rest der line und pack ihn in nen string
                 graph.addNode(name);          //in graph
 
@@ -44,13 +44,15 @@ void input() {
                 graph.addEdge(key1, key2, weight);
                 //find aus stl benutzen find(vector.begin, vector.end)
             }
-
+            else{
+                throw runtime_error("Ungültige datei!");
+            }
 
         }
 
     }
-    DotGraphVisualizer dgv;
-    dgv.visualize(graph);
+
+
 
 }
 

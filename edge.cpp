@@ -1,6 +1,6 @@
 
 #include "edge.hpp"
-using namespace std;
+
 Edge::Edge() {
 
 }
